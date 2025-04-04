@@ -2,7 +2,7 @@ package racingcar.view;
 
 public interface InputView {
 
-    String inputRacingCarsNames();
+    String inputRacingCarNames();
 
     String inputGameCount();
 

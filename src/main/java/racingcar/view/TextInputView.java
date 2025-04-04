@@ -8,7 +8,7 @@ public class TextInputView implements InputView {
     public static final String INPUT_GAME_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
 
     @Override
-    public String inputRacingCarsNames() {
+    public String inputRacingCarNames() {
         System.out.println(INPUT_RACING_CARS_NAME_MESSAGE);
         return Console.readLine();
     }
