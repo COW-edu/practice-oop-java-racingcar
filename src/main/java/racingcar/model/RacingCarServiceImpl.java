@@ -6,7 +6,7 @@ public class RacingCarServiceImpl implements RacingCarService {
 
     @Override
     public void createRacingCars(List<String> carNames) {
-        convertToRacingCar(carNames);
+        AllRacingCars allRacingCars = new AllRacingCars(convertToRacingCar(carNames));
     }
 
     private static List<RacingCar> convertToRacingCar(List<String> carNames) {
