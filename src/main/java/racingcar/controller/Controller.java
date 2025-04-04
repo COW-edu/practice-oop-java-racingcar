@@ -1,24 +1,43 @@
 package racingcar.controller;
 
+import static racingcar.common.ErrorMessage.ERROR_EMPTY_GAME_COUNT;
 import static racingcar.common.ErrorMessage.ERROR_EMPTY_RACING_CAR_NAME;
+import static racingcar.common.ErrorMessage.ERROR_GAME_COUNT_FORMAT;
 
 import java.util.List;
+import racingcar.model.RacingCarService;
 import racingcar.view.InputView;
 
 public class Controller {
 
     public static final String DELIMITER = ",";
+    public static final String NUMERIC_REGEX = "\\d+";
 
     private final InputView inputView;
+    private final RacingCarService racingCarService;
 
-    public Controller(InputView inputView) {
+    public Controller(InputView inputView, RacingCarService racingCarService) {
         this.inputView = inputView;
+        this.racingCarService = racingCarService;
     }
 
     public void run() {
         String inputNames = inputView.inputRacingCarNames();
         validateInputNames(inputNames);
         List<String> carNames = splitCarNames(inputNames);
+
+        String inputCount = inputView.inputGameCount();
+        validateInputCount(inputCount);
+        int gameCount = Integer.parseInt(inputCount);
+    }
+
+    private void validateInputCount(String inputCount) {
+        if (inputCount.trim().isEmpty() || inputCount == null) {
+            throw new IllegalArgumentException(ERROR_EMPTY_GAME_COUNT);
+        }
+        if (!inputCount.matches(NUMERIC_REGEX)) {
+            throw new IllegalArgumentException(ERROR_GAME_COUNT_FORMAT);
+        }
     }
 
     private static List<String> splitCarNames(String racingCarNames) {
