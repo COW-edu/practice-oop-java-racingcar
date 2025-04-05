@@ -6,8 +6,8 @@ import static racingcar.common.ErrorMessage.ERROR_GAME_COUNT_FORMAT;
 
 import java.util.List;
 import racingcar.model.domain.AllRacingCars;
-import racingcar.model.RacingCarService;
 import racingcar.model.domain.FullGame;
+import racingcar.model.service.RacingCarService;
 import racingcar.view.InputView;
 
 public class Controller {
@@ -27,7 +27,7 @@ public class Controller {
         String inputNames = inputView.inputRacingCarNames();
         validateInputNames(inputNames);
         List<String> carNames = splitCarNames(inputNames);
-        AllRacingCars allRacingCars = racingCarService.createRacingCars(carNames);
+        AllRacingCars allRacingCars = racingCarService.createAllRacingCars(carNames);
 
         String inputCount = inputView.inputGameCount();
         validateInputCount(inputCount);
