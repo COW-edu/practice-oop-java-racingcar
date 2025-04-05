@@ -1,7 +1,6 @@
 package racingcar.domain.model;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Race {
 
@@ -11,17 +10,17 @@ public class Race {
         this.racingCars = racingCars;
     }
 
-    public void startRace() {
-        for (RacingCar racingCar : racingCars.getRacingCars()) {
-            racingCar.move();
+    public RacingCars startRace(int tryingNumber) {
+        for (int i = 0; i < tryingNumber; i++) {
+            racingCars.getRacingCars().forEach(RacingCar::move);
         }
+        return racingCars;
+        //결과 출력할 때 필요.
     }
 
     public List<RacingCar> compare() {
         return racingCars.getRacingCars().stream().filter(car -> car.getPosition() == getWinningPosition()).toList();
     }
-
-
 
     private int getWinningPosition() {
         return racingCars.getRacingCars()
@@ -30,6 +29,4 @@ public class Race {
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("차량이 없습니다."));
     }
-
-
 }
