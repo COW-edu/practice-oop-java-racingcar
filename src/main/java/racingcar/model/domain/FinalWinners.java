@@ -13,10 +13,14 @@ public final class FinalWinners {
     }
 
     public static FinalWinners from(List<RacingCar> cars, int maxPosition) {
-        List<RacingCar> result = cars.stream()
+        List<RacingCar> result = calculateFinalWinners(cars, maxPosition);
+        return new FinalWinners(result);
+    }
+
+    private static List<RacingCar> calculateFinalWinners(List<RacingCar> cars, int maxPosition) {
+        return cars.stream()
                 .filter(car -> car.isSamePosition(maxPosition))
                 .collect(Collectors.toList());
-        return new FinalWinners(result);
     }
 
     public FinalWinnersDto toDto() {
