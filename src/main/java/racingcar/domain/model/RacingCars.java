@@ -3,7 +3,7 @@ package racingcar.domain.model;
 import java.util.List;
 
 public class RacingCars {
-    private List<RacingCar> racingCars;
+    private final List<RacingCar> racingCars;
 
     private RacingCars(List<RacingCar> carNames) {
         this.racingCars = carNames;
@@ -14,6 +14,10 @@ public class RacingCars {
 
     public static RacingCars create(List<RacingCar> userInput) {
         return new RacingCars(userInput);
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 
     private void validateDuplicateName() {
@@ -27,5 +31,6 @@ public class RacingCars {
             throw new IllegalArgumentException("이름 목록이 비어있습니다.");
         }
     }
+
 
 }
