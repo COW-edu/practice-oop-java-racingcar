@@ -10,4 +10,12 @@ public class FullGame {
         this.gameCount = gameCount;
     }
 
+    public GameRecords startGame() {
+        Game game = new Game();
+        GameRecords gameRecords = new GameRecords();
+        for (int round = 0; round < gameCount; round++) {
+            allRacingCars.play(gameRecords, round, game);
+        }
+        return gameRecords;
+    }
 }

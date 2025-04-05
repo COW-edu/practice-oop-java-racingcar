@@ -7,6 +7,7 @@ import static racingcar.common.ErrorMessage.ERROR_GAME_COUNT_FORMAT;
 import java.util.List;
 import racingcar.model.domain.AllRacingCars;
 import racingcar.model.domain.FullGame;
+import racingcar.model.domain.GameRecords;
 import racingcar.model.service.RacingCarService;
 import racingcar.view.InputView;
 
@@ -33,6 +34,7 @@ public class Controller {
         validateInputCount(inputCount);
         int gameCount = Integer.parseInt(inputCount);
         FullGame fullGame = racingCarService.createFullGame(allRacingCars, gameCount);
+        GameRecords gameRecords = fullGame.startGame();
     }
 
     private void validateInputCount(String inputCount) {
