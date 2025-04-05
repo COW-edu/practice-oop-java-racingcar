@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import racingcar.model.dto.FinalWinnersDto;
@@ -10,6 +11,7 @@ public class TextOutputView implements OutputView {
 
     public static final String GAME_RECORDS_MESSAGE = "실행 결과";
     public static final String FINAL_WINNERS_MESSAGE = "최종 우승자 : ";
+    public static final String EXPRESS_POSITION = "-";
 
     @Override
     public void outputGameRecords(GameResultDto gameResultDto) {
@@ -24,7 +26,7 @@ public class TextOutputView implements OutputView {
             for (Entry<String, Integer> entry : carPositions.entrySet()) {
                 String carName = entry.getKey();
                 int position = entry.getValue();
-                System.out.println(carName + " : " + "-".repeat(position));
+                System.out.println(carName + " : " + EXPRESS_POSITION.repeat(position));
             }
             System.out.println();
         }
@@ -33,9 +35,13 @@ public class TextOutputView implements OutputView {
     @Override
     public void outputFinalWinners(FinalWinnersDto finalWinnersDto) {
         System.out.print(FINAL_WINNERS_MESSAGE);
-        for (int i = 1; i<=finalWinnersDto.getWinners().size(); i++) {
-            System.out.print(finalWinnersDto.getWinners().get(i-1));
-            if (i < finalWinnersDto.getWinners().size()) {
+
+        List<String> winners = finalWinnersDto.getWinners();
+        int winnersCount = winners.size();
+        
+        for (int i=1; i<=winnersCount; i++) {
+            System.out.print(winners.get(i-1));
+            if (i < winnersCount) {
                 System.out.print(", ");
             }
         }
