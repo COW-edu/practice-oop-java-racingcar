@@ -10,6 +10,7 @@ import racingcar.model.domain.FullGame;
 import racingcar.model.domain.GameRecords;
 import racingcar.model.service.RacingCarService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class Controller {
 
@@ -17,10 +18,12 @@ public class Controller {
     public static final String NUMERIC_REGEX = "\\d+";
 
     private final InputView inputView;
+    private final OutputView outputView;
     private final RacingCarService racingCarService;
 
-    public Controller(InputView inputView, RacingCarService racingCarService) {
+    public Controller(InputView inputView, OutputView outputView, RacingCarService racingCarService) {
         this.inputView = inputView;
+        this.outputView = outputView;
         this.racingCarService = racingCarService;
     }
 
