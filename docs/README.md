@@ -5,20 +5,15 @@
 ### Domain
 - RacingCar (하나의 레이싱 카)
   - 차 이름 출력을 위한 getter
-- AllRacingCars (모든 레이싱 카들, 일급 컬렉션)
+  - 차 위치 이동 메서드
+- AllRacingCars (모든 레이싱 카들)
+  - 최종 우승자 반환 메서드
 - FullGame (전체 경기)
-  - AllGameResults 생성 메서드...?
 - Game (단일 경기)
-  - 해당 경기의 우승자 계산하여 Winners 객체 생성 및 반환하는 메서드
-- Winners (단일 경기 우승자, 일급 컬렉션)
-- WinnerCounts (누적 우승자, 일급 컬렉션)
-  - 최종 우승자 계산하여 FinalWinners 반환하는 메서드
+- GameRecords (경기 기록)
 - FinalWinners (최종 우승자)
+  - 최종 우승자 계산 메서드
   - 최종 우승자 출력을 위한 getter
-- AllGameResults (전체 경기 결과)
-- GameResult (단일 경기 결과)
-  - 단일 경기 우승자(Winners) 반환
-- 변경 예정...
 
 ### Service
 - RacingCarService (객체 생성과 메서드 호출 담당, 없애고 싶다.)
@@ -26,7 +21,7 @@
 1. 컨트롤러로부터 전달 받은 자동차 이름으로 RacingCar 객체 생성 
 2. RacingCar 객체들로 AllRacingCars 객체 생성
 2. AllRacingCars 객체와 컨트롤러로부터 전달 받은 시도 횟수로 FullGame 객체 생성
-3. FullGame 객체 내에서 GameResult 생성한 뒤 AllGameResults 생성
+3. FullGame 객체 내에서 GameResult 생성
 4. AllGameResults의 각 GameResult가 반환한 우승자들을 모아 FinalWinners 객체 생성
     - 각 GameResult 객체 내에서 하이픈 개수 비교
 6. GameResult에서 단일 경기 우승자 Winners 객체로 반환 
