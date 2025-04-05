@@ -26,25 +26,23 @@ public class AllRacingCars {
     }
 
     public FinalWinners getFinalWinners() {
-        int maxPosition = cars.stream()
-                .mapToInt(RacingCar::getPosition)
-                .max()
-                .orElse(0);
-
-        List<RacingCar> winners = cars.stream()
-                .filter(car -> car.isSamePosition(maxPosition))
-                .toList();
-
-        return new FinalWinners(winners);
-    }
-
-    private static List<RacingCar> convertToRacingCar(List<String> carNames) {
-        return carNames.stream().map(RacingCar::new).toList();
+        return FinalWinners.from(cars, calculateMaxPosition());
     }
 
     private void validate(List<RacingCar> cars) {
         if (cars.size() < MIN_CAR_COUNT) {
             throw new IllegalArgumentException(ERROR_SINGLE_RACING_CAR_NAME);
         }
+    }
+
+    private static List<RacingCar> convertToRacingCar(List<String> carNames) {
+        return carNames.stream().map(RacingCar::new).toList();
+    }
+
+    private int calculateMaxPosition() {
+        return cars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
     }
 }
