@@ -12,11 +12,9 @@ public class AllRacingCars {
         this.cars = convertToRacingCar(carNames);
     }
 
-    public void play(GameRecords gameRecords, int round, Game game) {
+    public void playOneRound(GameRecords gameRecords, int round, Game game) {
         for (RacingCar car : cars) {
-            if (Randoms.pickNumberInRange(0,9) > 4) {
-                game.move(car);
-            }
+            game.play(car);
         }
         gameRecords.record(round, game);
     }
