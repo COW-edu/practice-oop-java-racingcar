@@ -1,10 +1,11 @@
 package racingcar.view;
 
-import java.util.List;
+import java.util.Map;
+import racingcar.model.dto.GameResultDto;
 
 public interface OutputView {
 
-    void outputGameRecords(List<String> gameRecords);
+    void outputGameRecords(GameResultDto gameResultDto);
 
     void outputFinalWinners(String winners);
 }
