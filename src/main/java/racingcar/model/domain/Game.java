@@ -12,6 +12,8 @@ public class Game {
     public void play(RacingCar car) {
         if (Randoms.pickNumberInRange(0,9) > 4) {
             game.put(car, game.getOrDefault(car, 0) + 1);
+        } else {
+            game.put(car, game.getOrDefault(car, 0));
         }
     }
 

@@ -1,6 +1,5 @@
 package racingcar.model.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 
@@ -12,7 +11,8 @@ public class AllRacingCars {
         this.cars = convertToRacingCar(carNames);
     }
 
-    public void playOneRound(GameRecords gameRecords, int round, Game game) {
+    public void playOneRound(GameRecords gameRecords, int round) {
+        Game game = new Game();
         for (RacingCar car : cars) {
             game.play(car);
         }

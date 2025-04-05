@@ -11,10 +11,9 @@ public class FullGame {
     }
 
     public GameRecords startGame() {
-        Game game = new Game();
         GameRecords gameRecords = new GameRecords();
-        for (int round = 0; round < gameCount; round++) {
-            allRacingCars.playOneRound(gameRecords, round, game);
+        for (int round = 1; round <= gameCount; round++) {
+            allRacingCars.playOneRound(gameRecords, round);
         }
         return gameRecords;
     }
