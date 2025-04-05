@@ -17,6 +17,10 @@ public class RacingCar {
         }
     }
 
+    public boolean isSamePosition(int otherPosition) {
+        return this.position == otherPosition;
+    }
+
     public String getName() {
         return this.name;
     }

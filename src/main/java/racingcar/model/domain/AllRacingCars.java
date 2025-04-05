@@ -22,4 +22,17 @@ public class AllRacingCars {
     private static List<RacingCar> convertToRacingCar(List<String> carNames) {
         return carNames.stream().map(RacingCar::new).toList();
     }
+
+    public FinalWinners getFinalWinners() {
+        int maxPosition = cars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
+
+        List<RacingCar> winners = cars.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .toList();
+
+        return new FinalWinners(winners);
+    }
 }

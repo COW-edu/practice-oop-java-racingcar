@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.model.domain.AllRacingCars;
 import racingcar.model.domain.FullGame;
 import racingcar.model.domain.GameRecords;
+import racingcar.model.dto.FinalWinnersDto;
 import racingcar.model.dto.GameResultDto;
 
 public class RacingCarServiceImpl implements RacingCarService {
@@ -22,4 +23,10 @@ public class RacingCarServiceImpl implements RacingCarService {
     public GameResultDto getGameResult(GameRecords gameRecords) {
         return gameRecords.toDto();
     }
+
+    @Override
+    public FinalWinnersDto getFinalWinners(AllRacingCars allRacingCars) {
+        return allRacingCars.getFinalWinners().toDto();
+    }
+
 }

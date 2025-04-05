@@ -8,6 +8,7 @@ import java.util.List;
 import racingcar.model.domain.AllRacingCars;
 import racingcar.model.domain.FullGame;
 import racingcar.model.domain.GameRecords;
+import racingcar.model.dto.FinalWinnersDto;
 import racingcar.model.dto.GameResultDto;
 import racingcar.model.service.RacingCarService;
 import racingcar.view.InputView;
@@ -41,8 +42,10 @@ public class Controller {
 
         GameRecords gameRecords = fullGame.startGame();
         GameResultDto gameResultDto = racingCarService.getGameResult(gameRecords);
-
         outputView.outputGameRecords(gameResultDto);
+
+        FinalWinnersDto finalWinnersDto = racingCarService.getFinalWinners(allRacingCars);
+        outputView.outputFinalWinners(finalWinnersDto);
     }
 
     private void validateInputCount(String inputCount) {
