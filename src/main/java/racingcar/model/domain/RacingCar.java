@@ -4,6 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RacingCar {
 
+    public static final int MIN_NUMBER = 0;
+    public static final int MAX_NUMBER = 9;
+    public static final int JUDGE_NUMBER = 4;
+
     private final String name;
     private int position = 0;
 
@@ -12,7 +16,7 @@ public class RacingCar {
     }
 
     public void move() {
-        if (Randoms.pickNumberInRange(0, 9) > 4) {
+        if (Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER) > JUDGE_NUMBER) {
             position++;
         }
     }

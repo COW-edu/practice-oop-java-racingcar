@@ -2,6 +2,7 @@ package racingcar.model.domain;
 
 public class FullGame {
 
+    public static final int START_ROUND = 1;
     private final AllRacingCars allRacingCars;
     private final int gameCount;
 
@@ -12,7 +13,7 @@ public class FullGame {
 
     public GameRecords startGame() {
         GameRecords gameRecords = new GameRecords();
-        for (int round = 1; round <= gameCount; round++) {
+        for (int round = START_ROUND; round <= gameCount; round++) {
             allRacingCars.playOneRound(gameRecords, round);
         }
         return gameRecords;
