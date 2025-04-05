@@ -7,6 +7,8 @@ import java.util.List;
 
 public class AllRacingCars {
 
+    public static final int MIN_CAR_COUNT = 2;
+
     private final List<RacingCar> cars;
 
     public AllRacingCars(List<String> carNames) {
@@ -41,7 +43,7 @@ public class AllRacingCars {
     }
 
     private void validate(List<RacingCar> cars) {
-        if (cars.size() < 2) {
+        if (cars.size() < MIN_CAR_COUNT) {
             throw new IllegalArgumentException(ERROR_SINGLE_RACING_CAR_NAME);
         }
     }

@@ -5,6 +5,7 @@ import racingcar.common.ErrorMessage;
 public class FullGame {
 
     public static final int START_ROUND = 1;
+    public static final int MIN_GAME_COUNT = 0;
 
     private final AllRacingCars allRacingCars;
     private final int gameCount;
@@ -24,7 +25,7 @@ public class FullGame {
     }
 
     private void validate(int gameCount) {
-        if (gameCount <= 0) {
+        if (gameCount <= MIN_GAME_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_TOO_SMALL_GAME_COUNT);
         }
     }
