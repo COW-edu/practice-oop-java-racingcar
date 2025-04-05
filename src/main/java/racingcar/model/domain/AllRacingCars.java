@@ -5,7 +5,7 @@ import static racingcar.common.ErrorMessage.ERROR_SINGLE_RACING_CAR_NAME;
 import java.util.List;
 
 
-public class AllRacingCars {
+public final class AllRacingCars {
 
     public static final int MIN_CAR_COUNT = 2;
 

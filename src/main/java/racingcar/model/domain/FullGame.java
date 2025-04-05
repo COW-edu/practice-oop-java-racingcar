@@ -2,7 +2,7 @@ package racingcar.model.domain;
 
 import racingcar.common.ErrorMessage;
 
-public class FullGame {
+public final class FullGame {
 
     public static final int START_ROUND = 1;
     public static final int MIN_GAME_COUNT = 0;

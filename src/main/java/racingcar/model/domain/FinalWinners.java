@@ -1,11 +1,10 @@
 package racingcar.model.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.model.dto.FinalWinnersDto;
 
-public class FinalWinners {
+public final class FinalWinners {
 
     private final List<RacingCar> finalWinners;
 

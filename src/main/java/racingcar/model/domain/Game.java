@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import racingcar.model.dto.RoundResultDto;
 
-public class Game {
+public final class Game {
 
     private final Map<RacingCar, Integer> game = new HashMap<>();
 
