@@ -2,29 +2,34 @@ package racingcar.domain.model;
 
 public class RacingCar {
     private final String name;
-    private String winning = null;
+    private int position;
 
     public RacingCar(String name) {
+        validateNameLength();
+        validateNameEmpty();
         this.name = name;
+        this.position = 0;
     }
 
-    public void validateName() {
+    private void validateNameLength() {
         if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
         }
     }
 
-    public void move(RacingMachine racingMachine) {
-        if (racingMachine.isMoveable()) {
-            winning += "-";
+    private void validateNameEmpty() {
+        if (name == null) {
+            throw new IllegalArgumentException("이름이 존재하지 않습니다.");
         }
+    }
+
+    public void move() {
+        position ++;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getWinning() {
-        return winning;
-    }
+
 }
