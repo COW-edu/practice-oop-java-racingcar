@@ -20,15 +20,5 @@ public class Race {
         //최종 결과 출력할 때 필요.
     }
 
-    public List<RacingCar> compare() {
-        return racingCars.getRacingCars().stream().filter(car -> car.getPosition() == getWinningPosition()).toList();
-    }
 
-    private int getWinningPosition() {
-        return racingCars.getRacingCars()
-                .stream()
-                .mapToInt(RacingCar::getPosition)
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException("차량이 없습니다."));
-    }
 }
