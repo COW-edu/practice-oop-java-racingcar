@@ -1,6 +1,7 @@
 package racingcar.domain.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningRace {
     private final RacingCars racingCars;
@@ -9,8 +10,11 @@ public class WinningRace {
         this.racingCars = racingCars;
     }
 
-    public List<RacingCar> compare() {
-        return racingCars.getRacingCars().stream().filter(car -> car.getPosition() == getWinningPosition()).toList();
+    public RacingCars compare() {
+        return RacingCars.create(racingCars.getRacingCars()
+                .stream()
+                .filter(car -> car.getPosition() == getWinningPosition())
+                .toList());
     }
 
     private int getWinningPosition() {
