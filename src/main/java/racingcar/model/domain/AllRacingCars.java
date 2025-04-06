@@ -3,6 +3,9 @@ package racingcar.model.domain;
 import static racingcar.common.ErrorMessage.ERROR_SINGLE_RACING_CAR_NAME;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 public final class AllRacingCars {
@@ -17,10 +20,21 @@ public final class AllRacingCars {
         this.cars = cars;
     }
 
-    public void playOneRound(GameRecords gameRecords, int round) {
-        Game game = new Game();
-        cars.stream().forEach(game::play);
-        gameRecords.record(round, game);
+    public void playOneRound(GameRecords gameRecords, int roundCount) {
+        Round round = new Round(moveAllRacingCars());
+        gameRecords.record(roundCount, round);
+    }
+
+    private Map<RacingCar, Integer> moveAllRacingCars() {
+        return cars.stream()
+                .map(car -> {
+                    car.move();
+                    return car;
+                })
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        RacingCar::getPosition
+                ));
     }
 
     public FinalWinners getFinalWinners() {

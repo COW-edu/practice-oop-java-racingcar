@@ -1,22 +1,20 @@
 package racingcar.model.domain;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import racingcar.model.dto.RoundResultDto;
 
-public final class Game {
+public final class Round {
 
-    private final Map<RacingCar, Integer> game = new HashMap<>();
+    private final Map<RacingCar, Integer> round;
 
-    public void play(RacingCar car) {
-        car.move();
-        game.put(car, car.getPosition());
+    public Round(Map<RacingCar, Integer> round) {
+        this.round = round;
     }
 
     public RoundResultDto toDto() {
-        Map<String, Integer> result = game.entrySet().stream()
+        Map<String, Integer> result = round.entrySet().stream()
                 .collect(Collectors.toMap(
                         entry -> entry.getKey().getName(),
                         Entry::getValue
