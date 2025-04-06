@@ -1,5 +1,6 @@
 package racingcar.model.domain;
 
+import java.util.stream.IntStream;
 import racingcar.common.ErrorMessage;
 
 public final class FullGame {
@@ -18,9 +19,8 @@ public final class FullGame {
 
     public GameRecords startGame() {
         GameRecords gameRecords = new GameRecords();
-        for (int round = START_ROUND; round <= gameCount; round++) {
-            allRacingCars.playOneRound(gameRecords, round);
-        }
+        IntStream.rangeClosed(START_ROUND, gameCount)
+                .forEach(round -> allRacingCars.playOneRound(gameRecords, round));
         return gameRecords;
     }
 

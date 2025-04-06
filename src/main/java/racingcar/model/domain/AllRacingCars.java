@@ -19,9 +19,7 @@ public final class AllRacingCars {
 
     public void playOneRound(GameRecords gameRecords, int round) {
         Game game = new Game();
-        for (RacingCar car : cars) {
-            game.play(car);
-        }
+        cars.stream().forEach(game::play);
         gameRecords.record(round, game);
     }
 

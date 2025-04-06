@@ -30,22 +30,39 @@ public class Controller {
     }
 
     public void run() {
-        String inputNames = inputView.inputRacingCarNames();
-        validateInputNames(inputNames);
-        List<String> carNames = splitCarNames(inputNames);
-        AllRacingCars allRacingCars = racingCarService.createAllRacingCars(carNames);
+        AllRacingCars allRacingCars = createAllRacingCars();
 
+        FullGame fullGame = createFullGame(allRacingCars);
+
+        getGameRecords(fullGame);
+
+        getFinalWinners(allRacingCars);
+    }
+
+    private void getFinalWinners(AllRacingCars allRacingCars) {
+        FinalWinnersDto finalWinnersDto = racingCarService.getFinalWinners(allRacingCars);
+        outputView.outputFinalWinners(finalWinnersDto);
+    }
+
+    private void getGameRecords(FullGame fullGame) {
+        GameRecords gameRecords = fullGame.startGame();
+
+        GameResultDto gameResultDto = racingCarService.getGameResult(gameRecords);
+        outputView.outputGameRecords(gameResultDto);
+    }
+
+    private FullGame createFullGame(AllRacingCars allRacingCars) {
         String inputCount = inputView.inputGameCount();
         validateInputCount(inputCount);
         int gameCount = Integer.parseInt(inputCount);
-        FullGame fullGame = racingCarService.createFullGame(allRacingCars, gameCount);
+        return racingCarService.createFullGame(allRacingCars, gameCount);
+    }
 
-        GameRecords gameRecords = fullGame.startGame();
-        GameResultDto gameResultDto = racingCarService.getGameResult(gameRecords);
-        outputView.outputGameRecords(gameResultDto);
-
-        FinalWinnersDto finalWinnersDto = racingCarService.getFinalWinners(allRacingCars);
-        outputView.outputFinalWinners(finalWinnersDto);
+    private AllRacingCars createAllRacingCars() {
+        String inputNames = inputView.inputRacingCarNames();
+        validateInputNames(inputNames);
+        List<String> carNames = splitCarNames(inputNames);
+        return racingCarService.createAllRacingCars(carNames);
     }
 
     private void validateInputCount(String inputCount) {
