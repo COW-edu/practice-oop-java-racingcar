@@ -9,10 +9,10 @@ import racingcar.model.dto.RoundResultDto;
 
 public final class GameRecords {
 
-    private final Map<Integer, Round> gameRecords = new HashMap<>();
+    private final Map<Integer, Round> gameRecords;
 
-    public void record(int roundCount, Round round) {
-        gameRecords.put(roundCount, round);
+    public GameRecords(Map<Integer, Round> gameRecords) {
+        this.gameRecords = gameRecords;
     }
 
     public GameResultDto toDto() {

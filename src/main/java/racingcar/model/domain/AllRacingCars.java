@@ -20,21 +20,8 @@ public final class AllRacingCars {
         this.cars = cars;
     }
 
-    public void playOneRound(GameRecords gameRecords, int roundCount) {
-        Round round = new Round(moveAllRacingCars());
-        gameRecords.record(roundCount, round);
-    }
-
-    private Map<RacingCar, Integer> moveAllRacingCars() {
-        return cars.stream()
-                .map(car -> {
-                    car.move();
-                    return car;
-                })
-                .collect(Collectors.toMap(
-                        Function.identity(),
-                        RacingCar::getPosition
-                ));
+    public Round playOneRound() {
+        return new Round(moveAllRacingCars());
     }
 
     public FinalWinners getFinalWinners() {
@@ -56,5 +43,17 @@ public final class AllRacingCars {
                 .mapToInt(RacingCar::getPosition)
                 .max()
                 .orElse(0);
+    }
+
+    private Map<RacingCar, Integer> moveAllRacingCars() {
+        return cars.stream()
+                .map(car -> {
+                    car.move();
+                    return car;
+                })
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        RacingCar::getPosition
+                ));
     }
 }

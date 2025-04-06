@@ -45,7 +45,7 @@ public class Controller {
     }
 
     private void getGameRecords(FullGame fullGame) {
-        GameRecords gameRecords = fullGame.startGame();
+        GameRecords gameRecords = fullGame.playAllRounds();
 
         GameResultDto gameResultDto = racingCarService.getGameResult(gameRecords);
         outputView.outputGameRecords(gameResultDto);

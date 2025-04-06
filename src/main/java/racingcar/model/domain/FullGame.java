@@ -1,6 +1,7 @@
 package racingcar.model.domain;
 
-import java.util.stream.IntStream;
+import java.util.HashMap;
+import java.util.Map;
 import racingcar.common.ErrorMessage;
 
 public final class FullGame {
@@ -17,11 +18,13 @@ public final class FullGame {
         this.gameCount = gameCount;
     }
 
-    public GameRecords startGame() {
-        GameRecords gameRecords = new GameRecords();
-        IntStream.rangeClosed(START_ROUND, gameCount)
-                .forEach(round -> allRacingCars.playOneRound(gameRecords, round));
-        return gameRecords;
+    public GameRecords playAllRounds() {
+        Map<Integer, Round> gameResult = new HashMap<>();
+        for (int roundCount = START_ROUND; roundCount <= gameCount; roundCount++) {
+            Round round = allRacingCars.playOneRound();
+            gameResult.put(roundCount, round);
+        }
+        return new GameRecords(gameResult);
     }
 
     private void validate(int gameCount) {
