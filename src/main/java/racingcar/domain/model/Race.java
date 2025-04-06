@@ -12,12 +12,10 @@ public class Race {
         this.round = round;
     }
 
-    public RacingCars startRace(int tryingNumber) {
+    public void startRace(int tryingNumber) {
         for (int i = 0; i < tryingNumber; i++) {
             Round.createRound(racingCars).play();
         }
-        return racingCars;
-        //최종 결과 출력할 때 필요.
     }
 
 
