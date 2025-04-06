@@ -1,5 +1,6 @@
 package racingcar.domain.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RacingCars {
@@ -17,7 +18,11 @@ public class RacingCars {
     }
 
     public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return Collections.unmodifiableList(racingCars);
+    }
+
+    public void moveAll() {
+        racingCars.forEach(RacingCar::move);
     }
 
     private void validateDuplicateName() {
