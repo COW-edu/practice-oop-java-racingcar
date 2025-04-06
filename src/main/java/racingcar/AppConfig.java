@@ -8,7 +8,7 @@ import racingcar.view.OutputView;
 import racingcar.view.TextInputView;
 import racingcar.view.TextOutputView;
 
-public class AppConfig {
+public final class AppConfig {
 
     public Controller controller() {
         return new Controller(inputView(), outputView(), racingCarService());

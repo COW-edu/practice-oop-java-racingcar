@@ -2,7 +2,7 @@ package racingcar.model.dto;
 
 import java.util.Map;
 
-public class GameResultDto {
+public final class GameResultDto {
 
     private final Map<Integer, RoundResultDto> gameResult;
 

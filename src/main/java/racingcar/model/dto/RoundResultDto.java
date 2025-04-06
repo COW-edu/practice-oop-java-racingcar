@@ -2,7 +2,7 @@ package racingcar.model.dto;
 
 import java.util.Map;
 
-public class RoundResultDto {
+public final class RoundResultDto {
 
     private final Map<String, Integer> roundResult;
 

@@ -7,11 +7,13 @@ import racingcar.model.dto.FinalWinnersDto;
 import racingcar.model.dto.GameResultDto;
 import racingcar.model.dto.RoundResultDto;
 
-public class TextOutputView implements OutputView {
+public final class TextOutputView implements OutputView {
 
     public static final String GAME_RECORDS_MESSAGE = "실행 결과";
     public static final String FINAL_WINNERS_MESSAGE = "최종 우승자 : ";
     public static final String EXPRESS_POSITION = "-";
+    public static final int START_ROUND = 1;
+    public static final int MIN_WINNERS_COUNT = 1;
 
     @Override
     public void outputGameRecords(GameResultDto gameResultDto) {
@@ -19,7 +21,7 @@ public class TextOutputView implements OutputView {
 
         Map<Integer, RoundResultDto> gameResult = gameResultDto.getGameResult();
 
-        for (int round = 1; round <= gameResult.size(); round++) {
+        for (int round = START_ROUND; round <= gameResult.size(); round++) {
             RoundResultDto roundResult = gameResult.get(round);
             Map<String, Integer> carPositions = roundResult.getRoundResult();
 
@@ -39,7 +41,7 @@ public class TextOutputView implements OutputView {
         List<String> winners = finalWinnersDto.getWinners();
         int winnersCount = winners.size();
         
-        for (int i=1; i<=winnersCount; i++) {
+        for (int i = MIN_WINNERS_COUNT; i <= winnersCount; i++) {
             System.out.print(winners.get(i-1));
             if (i < winnersCount) {
                 System.out.print(", ");

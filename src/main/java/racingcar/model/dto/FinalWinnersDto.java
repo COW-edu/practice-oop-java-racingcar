@@ -2,7 +2,7 @@ package racingcar.model.dto;
 
 import java.util.List;
 
-public class FinalWinnersDto {
+public final class FinalWinnersDto {
 
     private final List<String> winners;
 
