@@ -1,6 +1,5 @@
 package racingcar.model.domain;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -11,8 +10,12 @@ public final class GameRecords {
 
     private final Map<Integer, Round> gameRecords;
 
-    public GameRecords(Map<Integer, Round> gameRecords) {
+    private GameRecords(Map<Integer, Round> gameRecords) {
         this.gameRecords = gameRecords;
+    }
+
+    public static GameRecords from(Map<Integer, Round> gameRecords) {
+        return new GameRecords(gameRecords);
     }
 
     public GameResultDto toDto() {
@@ -21,6 +24,6 @@ public final class GameRecords {
                         Entry::getKey,
                         entry -> entry.getValue().toDto()
                 ));
-        return new GameResultDto(result);
+        return GameResultDto.from(result);
     }
 }

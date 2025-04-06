@@ -12,7 +12,7 @@ public final class FinalWinners {
         this.finalWinners = finalWinners;
     }
 
-    public static FinalWinners from(List<RacingCar> cars, int maxPosition) {
+    public static FinalWinners of(List<RacingCar> cars, int maxPosition) {
         List<RacingCar> result = calculateFinalWinners(cars, maxPosition);
         return new FinalWinners(result);
     }
@@ -24,7 +24,7 @@ public final class FinalWinners {
     }
 
     public FinalWinnersDto toDto() {
-        return new FinalWinnersDto(finalWinners.stream().map(RacingCar::getName).toList());
+        return FinalWinnersDto.from(finalWinners.stream().map(RacingCar::getName).toList());
     }
 
 }

@@ -14,18 +14,21 @@ public final class AllRacingCars {
 
     private final List<RacingCar> cars;
 
-    public AllRacingCars(List<String> carNames) {
-        List<RacingCar> cars = convertToRacingCar(carNames);
+    private AllRacingCars(List<RacingCar> cars) {
         validate(cars);
         this.cars = cars;
     }
 
+    public static AllRacingCars from(List<String> carNames) {
+        return new AllRacingCars(convertToRacingCar(carNames));
+    }
+
     public Round playOneRound() {
-        return new Round(moveAllRacingCars());
+        return Round.from(moveAllRacingCars());
     }
 
     public FinalWinners getFinalWinners() {
-        return FinalWinners.from(cars, calculateMaxPosition());
+        return FinalWinners.of(cars, calculateMaxPosition());
     }
 
     private void validate(List<RacingCar> cars) {
@@ -35,7 +38,7 @@ public final class AllRacingCars {
     }
 
     private static List<RacingCar> convertToRacingCar(List<String> carNames) {
-        return carNames.stream().map(RacingCar::new).toList();
+        return carNames.stream().map(RacingCar::from).toList();
     }
 
     private int calculateMaxPosition() {

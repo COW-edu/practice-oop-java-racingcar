@@ -7,16 +7,16 @@ import racingcar.model.domain.GameRecords;
 import racingcar.model.dto.FinalWinnersDto;
 import racingcar.model.dto.GameResultDto;
 
-public class RacingCarServiceImpl implements RacingCarService {
+public final class RacingCarServiceImpl implements RacingCarService {
 
     @Override
     public AllRacingCars createAllRacingCars(List<String> carNames) {
-        return new AllRacingCars(carNames);
+        return AllRacingCars.from(carNames);
     }
 
     @Override
     public FullGame createFullGame(AllRacingCars allRacingCars, int gameCount) {
-        return new FullGame(allRacingCars, gameCount);
+        return FullGame.of(allRacingCars, gameCount);
     }
 
     @Override

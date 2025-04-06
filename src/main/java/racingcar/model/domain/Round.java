@@ -9,8 +9,12 @@ final class Round {
 
     private final Map<RacingCar, Integer> round;
 
-    public Round(Map<RacingCar, Integer> round) {
+    private Round(Map<RacingCar, Integer> round) {
         this.round = round;
+    }
+
+    public static Round from(Map<RacingCar, Integer> round) {
+        return new Round(round);
     }
 
     public RoundResultDto toDto() {
@@ -19,6 +23,6 @@ final class Round {
                         entry -> entry.getKey().getName(),
                         Entry::getValue
                 ));
-        return new RoundResultDto(result);
+        return RoundResultDto.from(result);
     }
 }

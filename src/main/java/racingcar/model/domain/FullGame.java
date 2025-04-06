@@ -12,10 +12,14 @@ public final class FullGame {
     private final AllRacingCars allRacingCars;
     private final int gameCount;
 
-    public FullGame(AllRacingCars allRacingCars, int gameCount) {
+    private FullGame(AllRacingCars allRacingCars, int gameCount) {
         validate(gameCount);
         this.allRacingCars = allRacingCars;
         this.gameCount = gameCount;
+    }
+
+    public static FullGame of(AllRacingCars allRacingCars, int gameCount) {
+        return new FullGame(allRacingCars, gameCount);
     }
 
     public GameRecords playAllRounds() {
@@ -24,7 +28,7 @@ public final class FullGame {
             Round round = allRacingCars.playOneRound();
             gameResult.put(roundCount, round);
         }
-        return new GameRecords(gameResult);
+        return GameRecords.from(gameResult);
     }
 
     private void validate(int gameCount) {

@@ -11,8 +11,12 @@ final class RacingCar {
     private final String name;
     private int position = 0;
 
-    public RacingCar(String name) {
+    private RacingCar(String name) {
         this.name = name;
+    }
+
+    public static RacingCar from(String name) {
+        return new RacingCar(name);
     }
 
     public void move() {
