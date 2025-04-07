@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Cars;
+import racingcar.domain.TryCount;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.service.RacingGameService;
 import racingcar.util.ErrorMessages;
@@ -22,8 +23,8 @@ public class RacingGameController {
     }
     public void run(MoveStrategy strategy) {
         Cars cars = createRacingCars();
-        int tryCount = parsingTryCounts(inputView.readTryCount());
-        repeatMoveAndPrint(cars, tryCount, strategy);
+        TryCount tryCount = new TryCount(parsingTryCounts(inputView.readTryCount()));
+        repeatMoveAndPrint(cars, tryCount.getValue(), strategy);
         outputView.printWinners(cars.findWinners());
 
     }
