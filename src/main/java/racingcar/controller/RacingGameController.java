@@ -4,9 +4,9 @@ import racingcar.domain.Cars;
 import racingcar.domain.TryCount;
 import racingcar.domain.strategy.MoveStrategy;
 import racingcar.service.RacingGameService;
-import racingcar.util.ErrorMessages;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+import racingcar.util.InputParser;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,12 +23,11 @@ public class RacingGameController {
     }
     public void run(MoveStrategy strategy) {
         Cars cars = createRacingCars();
-        TryCount tryCount = new TryCount(parsingTryCounts(inputView.readTryCount()));
+        TryCount tryCount = new TryCount(InputParser.parseTryCount(inputView.readTryCount()));
         repeatMoveAndPrint(cars, tryCount.getValue(), strategy);
         outputView.printWinners(cars.findWinners());
 
     }
-
 
     private void repeatMoveAndPrint(Cars cars, int tryCount, MoveStrategy strategy) {
         for (int i = 0; i < tryCount; i++) {
@@ -38,23 +37,7 @@ public class RacingGameController {
     }
 
     private Cars createRacingCars() {
-        List<String> carNames = parsingCarNames(inputView.createCarNames());
+        List<String> carNames = InputParser.parseCarNames(inputView.createCarNames());
         return racingGameService.createCars(carNames);
-
-    }
-
-    private int parsingTryCounts(String tryCount) {
-        try {
-            return Integer.parseInt(tryCount);
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException(ErrorMessages.INVALID_TRY_COUNT);
-        }
-    }
-
-    private List<String> parsingCarNames(String carNames) {
-      return Arrays.stream(carNames.split(","))
-                .map(String::trim)
-                .filter(name -> !name.isBlank())
-                .toList();
     }
 }
