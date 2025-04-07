@@ -26,9 +26,9 @@ public class OutputView {
 
 
     public void printWinner(GameResult result) {
-        System.out.println(UIConstants.WINNER_ANNOUNCEMENT);
-        List<String> carStatuses = result.getWinnerNames();
-        System.out.println(String.join(UIConstants.WINNER_DELIMITER, carStatuses));
+        List<String> winners = result.getWinnerNames();
+        String winnerNames = String.join(UIConstants.WINNER_DELIMITER, winners);
+        System.out.println(UIConstants.WINNER_ANNOUNCEMENT + UIConstants.DELIMITER_COLON + winnerNames);
     }
 
     private String getPosition(int position) {
