@@ -7,6 +7,8 @@ import racingcar.dto.GameResult;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.common.constant.GameConstants.*;
+
 public class RaceTrack {
 
     private final List<Car> cars = new ArrayList<>();
@@ -36,7 +38,7 @@ public class RaceTrack {
     }
 
     private boolean shouldMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+        return Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX) >= MIN_MOVE_THRESHOLD;
     }
 
     private int findMaxPosition() {

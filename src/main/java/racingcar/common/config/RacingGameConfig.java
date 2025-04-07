@@ -1,5 +1,7 @@
 package racingcar.common.config;
 
+import racingcar.common.constant.ErrorMessages;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +27,13 @@ public class RacingGameConfig {
 
     private void validateCarNames(List<String> carNames) {
         if(carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException("차 이름은 최소 1개 이상이어야 합니다.");
+            throw new IllegalArgumentException(ErrorMessages.EMPTY_CAR_NAMES);
         }
     }
 
     private void validateTotalRound(int totalRound) {
         if(totalRound <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 최소 1회 이상이어야 합니다");
+            throw new IllegalArgumentException(ErrorMessages.INVALID_TOTAL_ROUND);
         }
     }
 }

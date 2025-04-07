@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 
+import racingcar.common.constant.ErrorMessages;
 import racingcar.dto.GameResult;
 import racingcar.common.config.RacingGameConfig;
 import racingcar.dto.RoundResult;
@@ -30,7 +31,7 @@ public class RacingGame {
 
     private void validateCurrentRound() {
         if(currentRound >= totalRound) {
-            throw new IllegalStateException("모든 라운드가 진행되었습니다.");
+            throw new IllegalStateException(ErrorMessages.ALL_ROUNDS_COMPLETED);
         }
     }
 
