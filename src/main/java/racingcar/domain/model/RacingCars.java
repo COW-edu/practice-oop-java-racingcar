@@ -39,6 +39,6 @@ public class RacingCars {
 
 
     public List<RacingCar> getRacingCars() {
-        return racingCars.stream().collect(Collectors.toUnmodifiableList());
+        return racingCars.stream().toList();
     }
 }
