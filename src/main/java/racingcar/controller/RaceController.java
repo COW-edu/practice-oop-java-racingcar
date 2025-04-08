@@ -46,8 +46,7 @@ public class RaceController implements Controller {
 
     private RacingCars inputName() {
         outputView.printInitialName();
-        RacingCars racingCars = RacingCars.create(createRacingCars());
-        return racingCars;
+        return RacingCars.create(createRacingCars());
     }
 
 
