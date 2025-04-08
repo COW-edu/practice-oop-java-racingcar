@@ -3,8 +3,6 @@ package racingcar.domain.model;
 import racingcar.global.ErrorMessage;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<RacingCar> racingCars;

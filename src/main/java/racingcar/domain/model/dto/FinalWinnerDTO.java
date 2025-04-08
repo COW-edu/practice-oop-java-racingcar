@@ -1,10 +1,7 @@
 package racingcar.domain.model.dto;
 
 import racingcar.domain.model.Race;
-import racingcar.domain.model.RacingCar;
-import racingcar.domain.model.RacingCars;
 
-import java.util.stream.Collectors;
 
 public class FinalWinnerDTO {
     private final Race race;
