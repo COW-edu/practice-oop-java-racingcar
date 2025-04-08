@@ -1,32 +1,38 @@
 package racingcar.domain.model;
 
+import racingcar.global.Constant;
+import racingcar.global.ErrorMessage;
+
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class RacingCar {
     private final String name;
-    private int position;
+    private int position = Constant.START_POSITION;
 
-    public RacingCar(String name) {
+    private RacingCar(String name) {
+        this.name = name;
         validateNameLength();
         validateNameEmpty();
-        this.name = name;
-        this.position = 0;
+    }
+
+    public static RacingCar create(String name) {
+        return new RacingCar(name);
     }
 
     private void validateNameLength() {
         if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.NAME_TOO_LONG);
         }
     }
 
     private void validateNameEmpty() {
         if (name == null) {
-            throw new IllegalArgumentException("이름이 존재하지 않습니다.");
+            throw new IllegalArgumentException(ErrorMessage.NAME_MISSING);
         }
     }
 
     public void move() {
-        if (pickNumberInRange(0, 9) >= 4) {
+        if (pickNumberInRange(Constant.MIN, Constant.MAX) >= Constant.MOVE_NUMBER) {
             position++;
         }
     }
