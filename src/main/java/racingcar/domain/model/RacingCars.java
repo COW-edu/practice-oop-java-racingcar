@@ -3,6 +3,7 @@ package racingcar.domain.model;
 import racingcar.global.ErrorMessage;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<RacingCar> racingCars;
@@ -38,6 +39,6 @@ public class RacingCars {
 
 
     public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return racingCars.stream().collect(Collectors.toUnmodifiableList());
     }
 }
