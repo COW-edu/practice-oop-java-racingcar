@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.model.*;
 import racingcar.domain.model.dto.FinalWinnerDTO;
 import racingcar.domain.model.dto.RoundResultDTO;
+import racingcar.global.Constant;
 import racingcar.global.ErrorMessage;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -37,7 +38,7 @@ public class RaceController implements Controller {
         outputView.printTryNumberNotice();
         TryNumber tryNumber = validateInputTryNumber(inputView.inputTryNumber());
         Race race = null;
-        for (int i = 1; i <= tryNumber.getTryNumber(); i++) {
+        for (int i = Constant.START_ROUND; i <= tryNumber.getTryNumber(); i++) {
             race = Race.create(racingCars, tryNumber);
             outputView.printRoundResult(RoundResultDTO.from(race.startRace(),race));
         }
