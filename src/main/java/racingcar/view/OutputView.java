@@ -2,8 +2,6 @@ package racingcar.view;
 
 import racingcar.domain.model.dto.RoundResultDTO;
 
-import java.util.Map;
-
 public class OutputView {
 
     public void printInitialName() {
