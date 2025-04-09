@@ -26,11 +26,11 @@ public class Car {
         return this.position == position;
     }
 
-    public int getPosition() {
+    public int displayPosition() {
         return position;
     }
 
-    public String getName() {
+    public String displayName() {
         return name.toString();
     }
 

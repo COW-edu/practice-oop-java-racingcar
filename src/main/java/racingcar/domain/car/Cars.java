@@ -25,13 +25,13 @@ public class Cars {
 
         return racers.stream()
                 .filter(car -> car.isAtPosition(maxPosition))
-                .map(Car::getName)
+                .map(Car::displayName)
                 .collect(Collectors.toList());
     }
 
     private int findMaxPosition() {
         return racers.stream()
-                .mapToInt(Car::getPosition)
+                .mapToInt(Car::displayPosition)
                 .max()
                 .orElse(0);
     }
