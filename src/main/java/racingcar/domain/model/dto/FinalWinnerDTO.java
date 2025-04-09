@@ -6,7 +6,7 @@ import racingcar.domain.model.Race;
 public class FinalWinnerDTO {
     private final Race race;
 
-    public FinalWinnerDTO(Race race) {
+    private FinalWinnerDTO(Race race) {
         this.race = race;
     }
 

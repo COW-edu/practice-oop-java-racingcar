@@ -10,22 +10,22 @@ public class RacingCar {
     private int position = Constant.START_POSITION;
 
     private RacingCar(String name) {
+        validateNameLength(name);
+        validateNameEmpty(name);
         this.name = name;
-        validateNameLength();
-        validateNameEmpty();
     }
 
     public static RacingCar create(String name) {
         return new RacingCar(name);
     }
 
-    private void validateNameLength() {
+    private void validateNameLength(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException(ErrorMessage.NAME_TOO_LONG);
         }
     }
 
-    private void validateNameEmpty() {
+    private void validateNameEmpty(String name) {
         if (name == null) {
             throw new IllegalArgumentException(ErrorMessage.NAME_MISSING);
         }

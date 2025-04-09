@@ -3,16 +3,14 @@ package racingcar.domain.model;
 import racingcar.global.ErrorMessage;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<RacingCar> racingCars;
 
     private RacingCars(List<RacingCar> racingCars) {
+        validateNameListEmpty(racingCars);
+        validateDuplicateName(racingCars);
         this.racingCars = racingCars;
-        validateNameListEmpty();
-        validateDuplicateName();
-
     }
 
     public static RacingCars create(List<RacingCar> userInput) {
@@ -25,13 +23,13 @@ public class RacingCars {
     }
 
 
-    private void validateDuplicateName() {
+    private void validateDuplicateName(List<RacingCar> racingCars) {
         if (racingCars.size() != racingCars.stream().distinct().count()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAME);
         }
     }
 
-    private void validateNameListEmpty() {
+    private void validateNameListEmpty(List<RacingCar> racingCars) {
         if (racingCars.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_NAME_LIST);
         }
