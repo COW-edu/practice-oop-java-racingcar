@@ -1,9 +1,10 @@
 package racingcar.domain.model;
 
-import racingcar.global.Constant;
 import racingcar.global.ErrorMessage;
 
 public class TryNumber {
+    public static final int MIN = 0;
+
 
     private final int tryNumber;
 
@@ -17,7 +18,7 @@ public class TryNumber {
     }
 
     private void validateTryNumber(int tryNumber) {
-        if (tryNumber <= Constant.MIN) {
+        if (tryNumber <= MIN) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_NUMBER);
         }
     }
