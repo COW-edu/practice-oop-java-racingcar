@@ -12,15 +12,15 @@ public class AppConfig {
         return new RacingGameController(inputView(), outputView(), racingGameService());
     }
 
-    public InputView inputView() {
+    private InputView inputView() {
         return new InputView();
     }
 
-    public OutputView outputView() {
+    private OutputView outputView() {
         return new OutputView();
     }
 
-    public RacingGameService racingGameService() {
+    private RacingGameService racingGameService() {
         return new RacingGameService();
     }
 }
