@@ -11,10 +11,15 @@ public class Car {
         this.position = position;
     }
 
-    public void advance(MovementStrategy strategy) {
+    public static Car create(CarName name, int position) {
+        return new Car(name, position);
+    }
+
+    public Car move(MovementStrategy strategy) {
         if (strategy.shouldMove()) {
-            position++;
+            return new Car(this.name, this.position + 1);
         }
+        return this;
     }
 
     public boolean isAtPosition(int position) {

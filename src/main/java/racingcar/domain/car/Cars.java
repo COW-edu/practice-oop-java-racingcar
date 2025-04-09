@@ -12,12 +12,12 @@ public class Cars {
 
     public Cars(List<String> names) {
         this.racers = names.stream()
-                .map(name -> new Car(new CarName(name), INITIAL_POSITION))
-                .collect(Collectors.toList());
+                .map(name -> Car.create(CarName.from(name), INITIAL_POSITION))
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public void moveAll(MovementStrategy strategy) {
-        racers.forEach(car -> car.advance(strategy));
+        racers.forEach(car -> car.move(strategy));
     }
 
     public List<String> findWinnerNames() {
