@@ -8,9 +8,6 @@ import java.util.List;
 import racingcar.model.domain.AllRacingCars;
 import racingcar.model.domain.FullGame;
 import racingcar.model.domain.GameRecords;
-import racingcar.model.dto.FinalWinnersDto;
-import racingcar.model.dto.GameResultDto;
-import racingcar.model.service.RacingCarService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -21,12 +18,10 @@ public class Controller {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final RacingCarService racingCarService;
 
-    public Controller(InputView inputView, OutputView outputView, RacingCarService racingCarService) {
+    public Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.racingCarService = racingCarService;
     }
 
     public void run() {
@@ -40,29 +35,26 @@ public class Controller {
     }
 
     private void getFinalWinners(AllRacingCars allRacingCars) {
-        FinalWinnersDto finalWinnersDto = racingCarService.getFinalWinners(allRacingCars);
-        outputView.outputFinalWinners(finalWinnersDto);
+        outputView.outputFinalWinners(allRacingCars.getFinalWinners().toDto());
     }
 
     private void getGameRecords(FullGame fullGame) {
         GameRecords gameRecords = fullGame.playAllRounds();
-
-        GameResultDto gameResultDto = racingCarService.getGameResult(gameRecords);
-        outputView.outputGameRecords(gameResultDto);
+        outputView.outputGameRecords(gameRecords.toDto());
     }
 
     private FullGame createFullGame(AllRacingCars allRacingCars) {
         String inputCount = inputView.inputGameCount();
         validateInputCount(inputCount);
         int gameCount = Integer.parseInt(inputCount);
-        return racingCarService.createFullGame(allRacingCars, gameCount);
+        return FullGame.of(allRacingCars, gameCount);
     }
 
     private AllRacingCars createAllRacingCars() {
         String inputNames = inputView.inputRacingCarNames();
         validateInputNames(inputNames);
         List<String> carNames = splitCarNames(inputNames);
-        return racingCarService.createAllRacingCars(carNames);
+        return AllRacingCars.from(carNames);
     }
 
     private void validateInputCount(String inputCount) {
@@ -75,8 +67,7 @@ public class Controller {
     }
 
     private static List<String> splitCarNames(String racingCarNames) {
-        List<String> carNames = List.of(racingCarNames.split(DELIMITER));
-        return carNames;
+        return List.of(racingCarNames.split(DELIMITER));
     }
 
     private static void validateInputNames(String inputNames) {
