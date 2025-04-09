@@ -14,9 +14,9 @@ public class RaceManager {
     private final MovementStrategy movementStrategy;
     private Cars cars;
 
-    public RaceManager(View view) {
+    public RaceManager(View view, MovementStrategy movementStrategy) {
         this.view = view;
-        this.movementStrategy = new RandomMovement();
+        this.movementStrategy = movementStrategy;
     }
 
     public void start() {
