@@ -10,7 +10,7 @@ public class RacingCars {
     private RacingCars(List<RacingCar> racingCars) {
         validateNameListEmpty(racingCars);
         validateDuplicateName(racingCars);
-        this.racingCars = racingCars;
+        this.racingCars = List.copyOf(racingCars);
     }
 
     public static RacingCars create(List<RacingCar> userInput) {
@@ -37,6 +37,6 @@ public class RacingCars {
 
 
     public List<RacingCar> getRacingCars() {
-        return racingCars.stream().toList();
+        return racingCars;
     }
 }
