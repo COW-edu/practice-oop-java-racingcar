@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### CodeRabbit 무시 ###
+.coderabbit.yaml
